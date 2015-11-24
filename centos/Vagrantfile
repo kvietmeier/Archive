@@ -1,37 +1,55 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-### This version is working needed the correct box with Network Manager disabled ###
-# We set the last octet in IPV4 address here
-nodes = {
- 'centos01' => [1, 100],
- 'centos02' => [1, 101],
- 'centos03' => [1, 102],
- 'centos04' => [1, 110],
- 'centos05' => [1, 111],
-}
-
-Vagrant.configure("2") do |config| 
-  # Virtualbox
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure(2) do |config|
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "relativkreativ/centos-7-minimal"
 
-  # Default is 2200..something, but port 2200 is used by forescout NAC agent.
+  # Hostname
+  config.vm.hostname = "centos"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  #  config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.usable_port_range= 2800..2900
 
-  nodes.each do |prefix, (count, ip_start)|
-    count.times do |i|
-      hostname = "%s" % [prefix, (i+1)]
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  config.vm.network "private_network", ip: "172.16.0.10"
+  config.vm.network "private_network", ip: "172.10.0.10"
 
-      config.vm.define "#{hostname}" do |box|
-        box.vm.hostname = "#{hostname}.book"
-        box.vm.network :private_network, ip: "172.16.0.#{ip_start+i}", :netmask => "255.255.0.0"
-        box.vm.network :private_network, ip: "172.10.0.#{ip_start+i}", :netmask => "255.255.0.0" 
-        box.vm.network :private_network, ip: "192.168.100.#{ip_start+i}", :netmask => "255.255.255.0"
-        box.vm.provider :virtualbox do |vb|
-        vb.customize ["modifyvm", :id, "--memory", 512]
-        vb.customize ["modifyvm", :id, "--cpus", 1]
-        end # box.vm
-      end # config.vm.define 
-    end # count.times
-  end # nodes.each
-end # Vagrant.configure("2")
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  config.vm.provider "virtualbox" do |vb|
+   # Customize the amount of memory on the VM:
+   vb.memory = "512"
+  end
+  #
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   sudo apt-get update
+  #   sudo apt-get install -y apache2
+  # SHELL
+end
