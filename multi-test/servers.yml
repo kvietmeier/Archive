@@ -4,37 +4,50 @@
 # Builds a set of severs based on the yaml data structure in this file
 # From: http://blog.scottlowe.org/2014/10/22/multi-machine-vagrant-with-yaml/
 # Modified By: Karl Vietmeier
+# The newtworks can be configured by uncommenting the appropriate line in the Vagrantfile.
 
 # Create Centos and Ubuntu VMs for Ansible testing.
 - name: centos01
   box: relativkreativ/centos-7-minimal
   ram: 512
   cpus: 1
-  ip: 172.10.0.100
+  ip1: 172.10.0.100
+  ip2: 172.16.0.100
+  ip3: 192.168.100.100
 - name: centos02
   box: relativkreativ/centos-7-minimal
   ram: 512
   cpus: 1
-  ip: 172.10.0.101
+  ip1: 172.10.0.101
+  ip2: 172.16.0.101
+  ip3: 192.168.100.101
 - name: centos03
   box: relativkreativ/centos-7-minimal
   ram: 512
   cpus: 1
-  ip: 172.10.0.102
+  ip1: 172.10.0.102
+  ip2: 172.16.0.102
+  ip3: 192.168.100.102
 - name: ubuntu01
   box: trusty64
   ram: 512
   cpus: 1
-  ip: 172.10.0.103
+  ip1: 172.10.0.103
+  ip2: 172.16.0.103
+  ip3: 192.168.100.103
 - name: ubuntu02
   box: trusty64
   ram: 512
   cpus: 1
-  ip: 172.10.0.104
+  ip1: 172.10.0.104
+  ip2: 172.16.0.104
+  ip3: 192.168.100.104
 - name: ubuntu03
   box: trusty64
   ram: 512
   cpus: 1
-  ip: 172.10.0.105
+  ip1: 172.10.0.105
+  ip2: 172.16.0.105
+  ip3: 192.168.100.105
 
 ...
