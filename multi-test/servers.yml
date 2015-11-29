@@ -1,18 +1,40 @@
 ---
 # File: projects/vagrant/multi-test/servers.yml
 # Data structure for includng in a Vagrantfile
+# Builds a set of severs based on the yaml data structure in this file
+# From: http://blog.scottlowe.org/2014/10/22/multi-machine-vagrant-with-yaml/
+# Modified By: Karl Vietmeier
 
-- name: coreos-01
-  box: coreos-alpha
+# Create Centos and Ubuntu VMs for Ansible testing.
+- name: centos01
+  box: relativkreativ/centos-7-minimal
   ram: 512
-  ip: 172.17.8.101
-- name: coreos-02
-  box: coreos-alpha
+  cpus: 1
+  ip: 172.10.0.100
+- name: centos02
+  box: relativkreativ/centos-7-minimal
   ram: 512
-  ip: 172.17.8.102
-- name: coreos-03
-  box: coreos-alpha
+  cpus: 1
+  ip: 172.10.0.101
+- name: centos03
+  box: relativkreativ/centos-7-minimal
   ram: 512
-  ip: 172.17.8.103
+  cpus: 1
+  ip: 172.10.0.102
+- name: ubuntu01
+  box: trusty64
+  ram: 512
+  cpus: 1
+  ip: 172.10.0.103
+- name: ubuntu02
+  box: trusty64
+  ram: 512
+  cpus: 1
+  ip: 172.10.0.104
+- name: ubuntu03
+  box: trusty64
+  ram: 512
+  cpus: 1
+  ip: 172.10.0.105
 
 ...
