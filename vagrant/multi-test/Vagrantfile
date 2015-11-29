@@ -1,5 +1,8 @@
 # -*- mode: ruby -*-
 # # vi: set ft=ruby :
+# Read in a YAML file with server configs
+# From: http://blog.scottlowe.org/2014/10/22/multi-machine-vagrant-with-yaml/
+# Modfified By: Karl Vietmeier
  
 # Specify minimum Vagrant version and Vagrant API version
 Vagrant.require_version ">= 1.6.0"
@@ -18,7 +21,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   servers.each do |servers|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
-      srv.vm.network "private_network", ip: servers["ip"]
+      srv.vm.network "private_network", ip: servers["ip1"]
+      srv.vm.network "private_network", ip: servers["ip2"]
+      #srv.vm.network "private_network", ip: servers["ip3"]
       srv.vm.provider :virtualbox do |vb|
         vb.name = servers["name"]
         vb.memory = servers["ram"]
