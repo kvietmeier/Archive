@@ -16,11 +16,15 @@ servers = YAML.load_file('servers.yml')
  
 # Create boxes
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Default is 2200..something, but port 2200 is used by some tools
+  config.vm.usable_port_range= 2800..2900
  
   # Iterate through entries in YAML file
   servers.each do |servers|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
+      srv.vm.hostname = servers["name"]
       srv.vm.network "private_network", ip: servers["ip1"]
       srv.vm.network "private_network", ip: servers["ip2"]
       #srv.vm.network "private_network", ip: servers["ip3"]

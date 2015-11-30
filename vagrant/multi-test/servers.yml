@@ -29,21 +29,21 @@
   ip2: 172.16.0.102
   ip3: 192.168.100.102
 - name: ubuntu01
-  box: trusty64
+  box: ubuntu/trusty64
   ram: 512
   cpus: 1
   ip1: 172.10.0.103
   ip2: 172.16.0.103
   ip3: 192.168.100.103
 - name: ubuntu02
-  box: trusty64
+  box: ubuntu/trusty64
   ram: 512
   cpus: 1
   ip1: 172.10.0.104
   ip2: 172.16.0.104
   ip3: 192.168.100.104
 - name: ubuntu03
-  box: trusty64
+  box: ubuntu/trusty64
   ram: 512
   cpus: 1
   ip1: 172.10.0.105
