@@ -1,4 +1,5 @@
-#=============================================== 
+#
+Vagrant Project folders:
 centos/ 
   Single Centos VM
 
