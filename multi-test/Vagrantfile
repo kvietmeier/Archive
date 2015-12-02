@@ -24,6 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   servers.each do |servers|
     config.vm.define servers["name"] do |srv|
       srv.vm.box = servers["box"]
+      srv.ssh.username = servers["ssh_user"]
+      srv.ssh.password = servers["ssh_pass"]
       srv.vm.hostname = servers["name"]
       srv.vm.network "private_network", ip: servers["ip1"]
       srv.vm.network "private_network", ip: servers["ip2"]
