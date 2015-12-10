@@ -1,0 +1,34 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+### This version is working needed the correct box with Network Manager disabled ###
+# Set the IP addresses
+# Modifid to create a single VM for Devstack
+nodes = {
+ 'stack01' => [1, 51],
+}
+
+Vagrant.configure("2") do |config| 
+  # Virtualbox
+  config.vm.box = "trusty64"
+
+  # Default is 2200..something, but port 2200 is used by forescout NAC agent.
+  config.vm.usable_port_range= 2800..2900
+
+  nodes.each do |prefix, (count, ip_start)|
+    count.times do |i|
+      hostname = "%s" % [prefix, (i+1)]
+
+      config.vm.define "#{hostname}" do |box|
+        box.vm.hostname = "#{hostname}.book"
+        box.vm.network :private_network, ip: "172.16.0.#{ip_start+i}", :netmask => "255.255.0.0"
+        box.vm.network :private_network, ip: "172.10.0.#{ip_start+i}", :netmask => "255.255.0.0" 
+        box.vm.network :private_network, ip: "192.168.100.#{ip_start+i}", :netmask => "255.255.255.0"
+        box.vm.provider :virtualbox do |vb|
+        vb.customize ["modifyvm", :id, "--memory", 4096]
+        vb.customize ["modifyvm", :id, "--cpus", 1]
+        end # box.vm
+      end # config.vm.define 
+    end # count.times
+  end # nodes.each
+end # Vagrant.configure("2")
