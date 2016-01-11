@@ -15,11 +15,11 @@ cookbook/
 <!-- -->
 devops/
 
-* Multi-VM 5 Ubuntu using single Vagrantfile
+* Devstack vagrant environment
 <!-- -->
-ubuntu/
+devstack/
 
-* Multi-VM, Ansible testbed environment using YAML source file for Vagrantfile
+* Multi-VM (3 Centos, 3 Ubuntu) - Ansible testbed environment using YAML source file for Vagrantfile
 <!-- -->
 multi-test/
 
