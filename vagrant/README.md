@@ -23,5 +23,25 @@ ubuntu/
 <!-- -->
 multi-test/
 
-
-
+'''
+.
+├── README.md
+├── centos
+│   ├── Vagrantfile
+│   └── orig.Vagrantfile
+├── cookbook
+│   ├── Vagrantfile
+│   └── orig.Vagrantfile
+├── devops
+│   ├── Vagrantfile
+│   └── Vagrantfile.orig
+├── devstack
+│   ├── Vagrantfile
+│   ├── Vagrantfile.multi
+│   └── Vagrantfile.orig
+└── multi-test
+    ├── Vagrantfile
+    ├── Vagrantfile.orig
+    ├── servers.yml
+    └── vboxctl.sh
+'''
