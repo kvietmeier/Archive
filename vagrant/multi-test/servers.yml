@@ -15,11 +15,10 @@
 #  ssh_user: ubuntu
 #  ssh_pass: ubuntu
 
-# Create Centos and Ubuntu VMs for Ansible testing.
+###--- Create Centos and Ubuntu VMs for Ansible testing.
+# Centos
 - name: centos01
   box: relativkreativ/centos-7-minimal
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.100
@@ -27,8 +26,6 @@
   ip3: 192.168.100.100
 - name: centos02
   box: relativkreativ/centos-7-minimal
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.101
@@ -36,17 +33,14 @@
   ip3: 192.168.100.101
 - name: centos03
   box: relativkreativ/centos-7-minimal
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.102
   ip2: 172.16.0.102
   ip3: 192.168.100.102
+# Ubuntu
 - name: ubuntu01
   box: ubuntu/vivid64
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.103
@@ -54,8 +48,6 @@
   ip3: 192.168.100.103
 - name: ubuntu02
   box: ubuntu/vivid64
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.104
@@ -63,8 +55,6 @@
   ip3: 192.168.100.104
 - name: ubuntu03
   box: ubuntu/vivid64
-  ssh_user: vagrant
-  ssh_pass: vagrant
   ram: 512
   cpus: 1
   ip1: 172.10.0.105
