@@ -4,6 +4,7 @@
 Vagrant Project folders:
 
 * Single Centos VM
+<!-- -->
 centos/ 
 
 * Vagrant environment from OpenStack Cookbook
