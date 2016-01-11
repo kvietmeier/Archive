@@ -23,8 +23,9 @@ ubuntu/
 <!-- -->
 multi-test/
 
+---
 ```
-(~/sd/projects/vagrant)$
+(~/sd/projects/vagrant)$ tree
 .
 ├── README.md
 ├── centos
