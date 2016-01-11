@@ -23,7 +23,8 @@ ubuntu/
 <!-- -->
 multi-test/
 
-'''
+```
+(~/sd/projects/vagrant)$
 .
 ├── README.md
 ├── centos
@@ -44,4 +45,4 @@ multi-test/
     ├── Vagrantfile.orig
     ├── servers.yml
     └── vboxctl.sh
-'''
+```
