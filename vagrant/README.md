@@ -3,24 +3,25 @@
 ---
 Vagrant Project folders:
 
+* Single Centos VM
+<!-- -->
 centos/ 
 
-  Single Centos VM
-
+* Vagrant environment from OpenStack Cookbook
+<!-- -->
 cookbook/
 
-  Vagrant environment from OpenStack Cookbook
-
+* Multi-VM 5 Centos VMs using single Vagrantfile
+<!-- -->
 devops/
 
-  Multi-VM 5 Centos VMs using single Vagrantfile
-
+* Multi-VM 5 Ubuntu using single Vagrantfile
+<!-- -->
 ubuntu/
 
-  Multi-VM 5 Ubuntu using single Vagrantfile
+* Multi-VM, Ansible testbed environment using YAML source file for Vagrantfile
+<!-- -->
+multi-test/
 
-multi-test
-
-  Multi-VM, Ansible testbed environment using YAML source file for Vagrantfile
 
 
