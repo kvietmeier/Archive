@@ -34,10 +34,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.network "private_network", ip: servers["ip2"]
       #srv.vm.network "private_network", ip: servers["ip3"]  
       
-      # Fix for no tty with Ubuntu
-      config.vm.provision "fix-no-tty", type: "shell" do |s|
-        s.privileged = false
-        s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
+      # Fix for no tty with Ubuntu - need if statement because this breaks with centos
+      # added "os" dictionary entry in yaml.
+      if servers["os"] == "ubuntu"
+        config.vm.provision "fix-no-tty", type: "shell" do |s|
+          s.privileged = false
+          s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
+        end
       end
       
       # Copy in my public key

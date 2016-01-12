@@ -19,6 +19,7 @@
 # Centos
 - name: centos01
   box: relativkreativ/centos-7-minimal
+  os: centos
   ram: 512
   cpus: 1
   ip1: 172.10.0.100
@@ -26,6 +27,7 @@
   ip3: 192.168.100.100
 - name: centos02
   box: relativkreativ/centos-7-minimal
+  os: centos
   ram: 512
   cpus: 1
   ip1: 172.10.0.101
@@ -33,6 +35,7 @@
   ip3: 192.168.100.101
 - name: centos03
   box: relativkreativ/centos-7-minimal
+  os: centos
   ram: 512
   cpus: 1
   ip1: 172.10.0.102
@@ -41,6 +44,7 @@
 # Ubuntu
 - name: ubuntu01
   box: ubuntu/vivid64
+  os: ubuntu
   ram: 512
   cpus: 1
   ip1: 172.10.0.103
@@ -48,6 +52,7 @@
   ip3: 192.168.100.103
 - name: ubuntu02
   box: ubuntu/vivid64
+  os: ubuntu
   ram: 512
   cpus: 1
   ip1: 172.10.0.104
@@ -55,6 +60,7 @@
   ip3: 192.168.100.104
 - name: ubuntu03
   box: ubuntu/vivid64
+  os: ubuntu
   ram: 512
   cpus: 1
   ip1: 172.10.0.105
