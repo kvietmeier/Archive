@@ -1,8 +1,11 @@
 # -*- mode: ruby -*-
 # # vi: set ft=ruby :
-# Read in a YAML file with server configs
-# From: http://blog.scottlowe.org/2014/10/22/multi-machine-vagrant-with-yaml/
-# Modfified By: Karl Vietmeier
+# Vagrantfile to create multiple generic virtual machines based on a yaml dictionary.
+#
+#    From: http://blog.scottlowe.org/2014/10/22/multi-machine-vagrant-with-yaml/
+#    Modfified By: Karl Vietmeier
+#
+# Requires "servers.yml" to be in local directory
  
 # Specify minimum Vagrant version and Vagrant API version
 Vagrant.require_version ">= 1.6.0"
