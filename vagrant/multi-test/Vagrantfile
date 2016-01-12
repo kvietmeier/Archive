@@ -37,8 +37,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.network "private_network", ip: servers["ip2"]
       #srv.vm.network "private_network", ip: servers["ip3"]  
       
+      # We want to add the local user's public key to .ssh/authorized_keys
+      #
       # Fix for no tty with Ubuntu - need if statement because this breaks with centos
-      # added "os" dictionary entry in yaml.
+      # - added "os" dictionary entry in yaml.
       if servers["os"] == "ubuntu"
         config.vm.provision "fix-no-tty", type: "shell" do |s|
           s.privileged = false
@@ -46,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
       end
       
-      # Copy in my public key
+      # Add the public key
       config.vm.provision "Copy my keys", type: "shell" do |s|
         ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
         s.inline = <<-SHELL
