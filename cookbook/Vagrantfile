@@ -1,5 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+# Vagrantfile to create 5 VMs based on the OpenStack Cookbook instructions.
+# Stripped out evreything but Virtualbox configuration.
+# Source:  https://github.com/OpenStackCookbook/OpenStackCookbook
+# Good examples of some ruby syntax.
+
 # We set the last octet in IPV4 address here
 nodes = {
  'controller' => [1, 200],
@@ -11,7 +16,7 @@ nodes = {
 
 Vagrant.configure("2") do |config| 
   # Virtualbox
-  config.vm.box = "trusty64"
+  config.vm.box = "ubuntu/vivid64"
   config.vm.box_url = "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
   config.vm.synced_folder ".", "/vagrant", type: "nfs"
 

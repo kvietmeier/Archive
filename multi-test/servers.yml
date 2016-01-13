@@ -43,7 +43,7 @@
   ip3: 192.168.100.102
 # Ubuntu
 - name: ubuntu01
-  box: ubuntu/vivid64
+  box: box-cutter/ubuntu1404
   os: ubuntu
   ram: 512
   cpus: 1
@@ -51,7 +51,7 @@
   ip2: 172.16.0.103
   ip3: 192.168.100.103
 - name: ubuntu02
-  box: ubuntu/vivid64
+  box: box-cutter/ubuntu1404
   os: ubuntu
   ram: 512
   cpus: 1
@@ -59,7 +59,7 @@
   ip2: 172.16.0.104
   ip3: 192.168.100.104
 - name: ubuntu03
-  box: ubuntu/vivid64
+  box: box-cutter/ubuntu1404
   os: ubuntu
   ram: 512
   cpus: 1
