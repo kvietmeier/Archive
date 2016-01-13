@@ -17,6 +17,8 @@ require 'yaml'
 # Read YAML file with box details
 servers = YAML.load_file('servers.yml')
 
+# Define some variables
+ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
 ssh_user = "vagrant"
 ssh_pass = "vagrant"
 
@@ -36,39 +38,37 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       srv.vm.network "private_network", ip: servers["ip1"]
       srv.vm.network "private_network", ip: servers["ip2"]
       #srv.vm.network "private_network", ip: servers["ip3"]  
-      
-      # We want to add the local user's public key to .ssh/authorized_keys
-      #
-      # Fix for no tty with Ubuntu - need if statement because this breaks with centos
-      # - added "os" dictionary entry in yaml.
-      if servers["os"] == "ubuntu"
-        config.vm.provision "fix-no-tty", type: "shell" do |s|
-          s.privileged = false
-          s.inline = "sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
-        end
-      end
-      
-      # Add the public key
-      config.vm.provision "Copy my keys", type: "shell" do |s|
-        ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
-        s.inline = <<-SHELL
-          echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
-          #echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
-        SHELL
-      end
-      
+
       # VM parameters
       srv.vm.provider :virtualbox do |vb|
         vb.name = servers["name"]
         vb.memory = servers["ram"]
         vb.cpus = servers["cpus"]
       end
+
+      ### We want to add the local user's public key to .ssh/authorized_keys
+      # Fix for no tty with Ubuntu - need if statement because this breaks with centos
+      if servers["os"] == "ubuntu"
+        config.vm.provision "fix-no-tty", type: "shell" do |s|
+          s.privileged = false
+          s.inline = <<-SHELL
+            sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile
+            echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
+          SHELL
+        end  
+      end
       
-      # Copy over local /etc/hosts
-      #config.vm.provision "file", source: "/etc/hosts", destination: "/etc/hosts"
-    end
-  end
-end
+      # Add the public key
+      config.vm.provision "Copy my keys", type: "shell" do |s|
+        s.inline = <<-SHELL
+          echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+          sudo cp /vagrant/files/hosts /etc/hosts
+        SHELL
+      end
+
+    end  # config.vm.define
+  end  #servers.each
+end  # Vagrant.configure
 
 
 
