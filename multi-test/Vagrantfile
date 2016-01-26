@@ -51,9 +51,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       if servers["os"] == "ubuntu"
         config.vm.provision "fix-no-tty", type: "shell" do |s|
           s.privileged = false
+          # sudo echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
           s.inline = <<-SHELL
             sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile
-            echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
           SHELL
         end  
       end
