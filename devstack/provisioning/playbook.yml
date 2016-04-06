@@ -1,0 +1,65 @@
+---
+# Simple Vagrant playbook for Ubuntu
+#
+#- include: group_vars/all.yml
+
+- hosts: all
+  tasks:
+    - name: "Ubuntu: Install a Bunch of Useful Packages you will need eventually"
+      when: ansible_distribution == 'Ubuntu'
+      apt: name={{ item }} state=present
+      with_items: "{{xtra_pkgs}}"
+      tags:
+         - pkgs
+
+    # Upgrade Debian/Ubuntu based systems and reboot if necessary.
+    # Ubuntu seemd kind of flaky here - can end up with an unusable system
+    - name: "Ubuntu: Install Ubuntu Development Tools"
+      when: ansible_distribution == 'Ubuntu'
+      apt: name=build-essential state=present
+      tags: 
+         - pkgs
+
+    - name: "Ubuntu: Install Bunch of Useful Packages"
+      when: ansible_distribution == 'Ubuntu'
+      apt: name={{ item }} state=present update_cache=yes
+      with_items: "{{ubuntu_pkgs}}"
+      tags: 
+          - pkgs
+
+    - name: "Ubuntu: Check if there are packages available to be installed/upgraded"
+      when: ansible_distribution == 'Ubuntu'
+      command: /usr/lib/update-notifier/apt-check --package-names
+      register: packages
+      tags:
+         - pkgs
+
+    - name: "Update apt cache"
+      when: (ansible_distribution == 'Ubuntu')
+      apt: update_cache=yes cache_valid_time=3600
+      tags:
+         - pkgs
+
+    - name: "Ubuntu: Upgrade all packages to the latest version"
+      when: (ansible_distribution == 'Ubuntu') and (packages.stderr != "")
+      apt: upgrade=dist
+      tags:
+        - pkgs
+
+    - name: "All: Update Man Page Database"
+      command: mandb
+      tags:
+      - pkgs
+
+    #--- SSH Keys
+#    - name: Copy rsa keys to user root
+ #     authorized_key: user=root key="{{ item }}"
+#      become: yes
+#      become_method: sudo
+#      with_file:
+#        - auth/skarn.id_rsa.pub
+#      tags:
+#       - usercfg
+
+...
+
