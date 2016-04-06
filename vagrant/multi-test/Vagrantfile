@@ -55,8 +55,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           s.inline = <<-SHELL
             sudo sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile
           SHELL
-        end  
-      end
+        end # provision
+      end # if
       
       # Add the public key
       config.vm.provision "Copy my keys", type: "shell" do |s|
@@ -68,8 +68,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           echo #{ssh_pub_key} >> /root/.ssh/authorized_keys
           sudo cp /vagrant/files/hosts /etc/hosts
         SHELL
-      end
-
+      end # config.provision
     end  # config.vm.define
   end  #servers.each
 end  # Vagrant.configure
