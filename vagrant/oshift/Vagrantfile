@@ -1,8 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-
-VAGRANTFILE_API_VERSION = "2"
+#VAGRANTFILE_API_VERSION = "2"
 Vagrant.require_version ">= 1.7.2"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -10,11 +9,11 @@ Vagrant.require_version ">= 1.7.2"
 # you're doing.
 Vagrant.configure(2) do |config|
   
-  #config.vm.box = "thesteve0/openshift-origin"
+  config.vm.box = "thesteve0/openshift-origin"
   #uncomment this line if you downloaded the box and want to use it instead
-  config.vm.box = "openshift3"
+  #config.vm.box = "openshift3"
   config.vm.box_check_update = false
-  config.vm.network "private_network", ip: "10.2.2.2"
+  config.vm.network "private_network", ip: "10.2.2.10"
   config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.hostname = "origin"
 

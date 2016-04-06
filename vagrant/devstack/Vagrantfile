@@ -3,7 +3,7 @@
 
 ### This version is working needed the correct box with Network Manager disabled ###
 # Set the IP addresses
-# Modifid to create a single VM for Devstack
+# Modified to create a single VM for Devstack
 nodes = {
  'stack01' => [1, 51],
 }
