@@ -1,45 +1,44 @@
 ### Vagrant Projects
 
 ---
-##### Vagrant Project folders:
 
 * __Cloud Foundry micro-bosh instance__
 <!-- -->
 ---micr-bosh/ 
 
-* Single Centos VM
+* __Single Centos VM__
 <!-- -->
 ---centos/ 
 
-* Cloud Foundry - micro-bosh
+* __Cloud Foundry - micro-bosh__
 <!-- -->
 ---cf-workspace-MQQ7/
 
-* Vagrant environment from OpenStack Cookbook
+* __Vagrant environment from OpenStack Cookbook__
 <!-- -->
 ---cookbook/
 
-* Multi-VM 5 Centos VMs using single Vagrantfile
+* __Multi-VM 5 Centos VMs using single Vagrantfile__
 <!-- -->
 ---devops/
 
-* Devstack vagrant environment
+* __Devstack vagrant environment__
 <!-- -->
 ---devstack/
 
-* Devstack vagrant environment - multi-node (not working)
+* __Devstack vagrant environment - multi-node (not working)__
 <!-- -->
 ---devstack-vagrant/
 
-* Multi-VM (3 Centos, 3 Ubuntu) - Ansible testbed environment using YAML source file for Vagrantfile
+* __Multi-VM (3 Centos, 3 Ubuntu) - Ansible testbed environment using YAML source file for Vagrantfile__
 <!-- -->
 ---multi-server/
 
-* Openshift Origin "all-in-one"
+* __Openshift Origin "all-in-one"__
 <!-- -->
 ---oshift/
 
-* Single ubuntu VM
+* __Single ubuntu VM__
 <!-- -->
 ---ubuntu/
 
