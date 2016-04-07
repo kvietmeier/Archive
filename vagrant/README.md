@@ -1,9 +1,9 @@
 ### Vagrant Projects
 
 ---
-Vagrant Project folders:
+##### Vagrant Project folders:
 
-* Cloud Foundry micro-bosh instance 
+* __Cloud Foundry micro-bosh instance__
 <!-- -->
 ---micr-bosh/ 
 
