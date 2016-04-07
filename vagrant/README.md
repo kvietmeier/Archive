@@ -3,49 +3,110 @@
 ---
 Vagrant Project folders:
 
+* Cloud Foundry micro-bosh instance 
+<!-- -->
+---micr-bosh/ 
+
 * Single Centos VM
 <!-- -->
-centos/ 
+---centos/ 
+
+* Cloud Foundry - micro-bosh
+<!-- -->
+---cf-workspace-MQQ7/
 
 * Vagrant environment from OpenStack Cookbook
 <!-- -->
-cookbook/
+---cookbook/
 
 * Multi-VM 5 Centos VMs using single Vagrantfile
 <!-- -->
-devops/
+---devops/
 
 * Devstack vagrant environment
 <!-- -->
-devstack/
+---devstack/
+
+* Devstack vagrant environment - multi-node (not working)
+<!-- -->
+---devstack-vagrant/
 
 * Multi-VM (3 Centos, 3 Ubuntu) - Ansible testbed environment using YAML source file for Vagrantfile
 <!-- -->
-multi-test/
+---multi-server/
+
+* Openshift Origin "all-in-one"
+<!-- -->
+---oshift/
+
+* Single ubuntu VM
+<!-- -->
+---ubuntu/
+
 
 ---
 ```
-(~/sd/projects/vagrant)$ tree
 .
 ├── README.md
+├── bosh-lite
+│   ├── LICENSE
+│   ├── README.md
+│   ├── Vagrantfile
+│   ├── bin
+│   ├── cf-redis-release
+│   ├── cf-release
+│   ├── ci
+│   ├── deploy.yml
+│   ├── diego-release
+│   ├── docs
+│   ├── packer
+│   └── tmp
 ├── centos
 │   ├── Vagrantfile
 │   └── orig.Vagrantfile
+├── cf-workspace-MQQ7
+│   ├── bin
+│   ├── bosh-lite
+│   ├── cf-redis-release
+│   ├── cf-release
+│   └── diego-release
 ├── cookbook
 │   ├── Vagrantfile
+│   ├── files
 │   └── orig.Vagrantfile
 ├── devops
 │   ├── Vagrantfile
-│   └── Vagrantfile.orig
+│   └── orig.Vagrantfile
 ├── devstack
 │   ├── Vagrantfile
 │   ├── Vagrantfile.multi
-│   └── Vagrantfile.orig
-└── multi-test
-    ├── Vagrantfile
-    ├── Vagrantfile.orig
-    ├── servers.yml
-    └── vboxctl.sh
+│   ├── Vagrantfile.orig
+│   ├── cleanenv.sh
+│   ├── install_devstack.sh
+│   ├── local.conf
+│   ├── provisioning
+│   └── stack.sh
+├── devstack-vagrant
+│   ├── LICENSE.md
+│   ├── README.md
+│   ├── Vagrantfile
+│   ├── config.yaml
+│   ├── config.yaml.sample
+│   ├── puppet
+│   └── tools
+├── multi-server
+│   ├── Vagrantfile
+│   ├── bkup
+│   ├── files
+│   ├── scripts
+│   └── servers.yml
+├── oshift
+│   ├── Vagrantfile
+│   └── docs
+└── ubuntu
+    └── Vagrantfile
+
+
 ```
 ---
 
