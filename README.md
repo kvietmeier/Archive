@@ -4,7 +4,7 @@
 
 * __Cloud Foundry micro-bosh instance__
 <!-- -->
----micr-bosh/ 
+---micro-bosh/ 
 
 * __Single Centos VM__
 <!-- -->
