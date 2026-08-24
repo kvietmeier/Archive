@@ -1,0 +1,4 @@
+<topics enabled="true">
+  <topic name="ADDCREDIT" procedure="AddCredit" /> 
+  <topic name="USER_FINANCIAL_EVENTS" retention="10gb" />
+</topics>
